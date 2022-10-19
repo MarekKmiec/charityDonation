@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -101,65 +101,92 @@
 </section>
 
 <section class="help">
-    <h2>Komu pomagamy?</h2>
+<h2>Komu pomagamy?</h2>
 
-    <!-- SLIDE 1 -->
-    <div class="help--slides active" data-id="1">
-        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
-            Możesz sprawdzić czym się zajmują.</p>
 
-        <ul class="help--slides-items">
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                </div>
+<!-- SLIDE 1 -->
+<div class="help--slides active" data-id="1">
+<p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
+    Możesz sprawdzić czym się zajmują.</p>
 
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
-            </li>
 
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
+<%--        <c:forEach items="${institutions}" var="i">--%>
+<%--        <ul class="help--slides-items" >--%>
 
-            </li>
+<%--                        <li>--%>
+<%--                            <div class="col">--%>
+<%--                                <div class="title">${i.name}</div--%>
+<%--                                <div class="subtitle">Cel i misja: ${i.description}</div--%>
+<%--                            </div>--%>
 
-        </ul>
+<%--                            <div class="col">--%>
+<%--                                <div class="title">${i.name}</div--%>
+<%--                                <div class="subtitle">Cel i misja:  ${i.description}</div--%>
+<%--                            </div>--%>
+
+<%--                        </li>--%>
+
+
+<%--        </ul>--%>
+
+<%--        </c:forEach>--%>
+
+
+<ul class="help--slides-items">
+<c:forEach items="${institutions}" var="i" varStatus="s">
+     <c:if test="${(s.count-1)%2==0}"><li></c:if>
+    <div class="col">
+    <div class="title">${i.name}</div>
+    <div class="subtitle">${i.description}</div>
     </div>
 
-</section>
+<%--    <div class="col">--%>
+<%--    <div class="title">Fundacja "A kogo"</div>--%>
+<%--    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>--%>
+<%--    </div>--%>
+<%--    </li>--%>
 
-<footer>
+<%--    <li>--%>
+<%--    <div class="col">--%>
+<%--    <div class="title">Fundacja “Dla dzieci"</div>--%>
+<%--    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>--%>
+<%--    </div>--%>
+<%--    <div class="col">--%>
+<%--    <div class="title">Fundacja “Bez domu”</div>--%>
+<%--    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>--%>
+<%--    </div>--%>
+
+    <c:if test="${s.count%2==0}"></li></c:if>
+</c:forEach>
+    </ul>
+
+    </div>
+
+
+    </section>
+
+    <footer>
     <div class="contact">
-        <h2>Skontaktuj się z nami</h2>
-        <h3>Formularz kontaktowy</h3>
-        <form class="form--contact">
-            <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię"/></div>
-            <div class="form-group form-group--50"><input type="text" name="surname" placeholder="Nazwisko"/></div>
+    <h2>Skontaktuj się z nami</h2>
+    <h3>Formularz kontaktowy</h3>
+    <form class="form--contact">
+    <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię"/></div>
+    <div class="form-group form-group--50"><input type="text" name="surname" placeholder="Nazwisko"/></div>
 
-            <div class="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
+    <div class="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
 
-            <button class="btn" type="submit">Wyślij</button>
-        </form>
+    <button class="btn" type="submit">Wyślij</button>
+    </form>
     </div>
     <div class="bottom-line">
-        <span class="bottom-line--copy">Copyright &copy; 2018</span>
-        <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="<c:url value="resources/images/icon-facebook.svg"/> "/></a>
-            <a href="#" class="btn btn--small"><img src="<c:url value="resources/images/icon-instagram.svg"/>"/></a>
-        </div>
+    <span class="bottom-line--copy">Copyright &copy; 2018</span>
+    <div class="bottom-line--icons">
+    <a href="#" class="btn btn--small"><img src="<c:url value="resources/images/icon-facebook.svg"/> "/></a>
+    <a href="#" class="btn btn--small"><img src="<c:url value="resources/images/icon-instagram.svg"/>"/></a>
     </div>
-</footer>
+    </div>
+    </footer>
 
-<script src="<c:url value="resources/js/app.js"/>"></script>
-</body>
-</html>
+    <script src="<c:url value="resources/js/app.js"/>"></script>
+    </body>
+    </html>

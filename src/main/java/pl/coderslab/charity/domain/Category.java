@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Category {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Name;
 
@@ -25,6 +25,14 @@ public class Category {
     }
 
     public void setName(String name) {
+        Name = name;
+    }
+
+    public Category() {
+
+    }
+
+    public Category(String name) {
         Name = name;
     }
 

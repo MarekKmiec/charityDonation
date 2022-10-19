@@ -37,6 +37,15 @@ public class Institution {
         this.description = description;
     }
 
+    public Institution( String name, String description) {
+
+        this.name = name;
+        this.description = description;
+    }
+    public Institution(){
+
+    }
+
     @Override
     public String toString() {
         return "Institution{" +

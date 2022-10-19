@@ -5,6 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.domain.Category;
 import pl.coderslab.charity.repository.CategoryRepository;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class CategoryService {
@@ -17,5 +19,8 @@ public class CategoryService {
     public Category addCategory(Category category){
         categoryRepository.save(category);
         return category;
+    }
+    public List<Category> findAll(){
+       return categoryRepository.findAll();
     }
 }

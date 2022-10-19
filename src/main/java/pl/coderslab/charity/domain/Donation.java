@@ -14,7 +14,7 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
 
     @OneToOne
@@ -105,6 +105,22 @@ public class Donation {
     }
 
     public void setPickUpComment(String pickUpComment) {
+        this.pickUpComment = pickUpComment;
+    }
+
+    public Donation(){
+
+    }
+
+    public Donation(Integer quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
+        this.quantity = quantity;
+        this.categories = categories;
+        this.institution = institution;
+        this.street = street;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.pickUpDate = pickUpDate;
+        this.pickUpTime = pickUpTime;
         this.pickUpComment = pickUpComment;
     }
 
