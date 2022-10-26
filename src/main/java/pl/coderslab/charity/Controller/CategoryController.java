@@ -24,11 +24,13 @@ public class CategoryController {
         this.institutionService = institutionService;
     }
 
-    @GetMapping("/list")
-    public String allCategory(Model model) {
-        model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("institutions",institutionService.findAll());
-        return "listCategories";
-    }
+//    @GetMapping("/list")
+//    public String allCategory(Model model) {
+//        model.addAttribute("categories", categoryService.findAll());
+//        model.addAttribute("institutions",institutionService.findAll());
+//        return "listCategories";
+//    }
+
+
 
 }

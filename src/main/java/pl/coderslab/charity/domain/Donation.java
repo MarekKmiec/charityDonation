@@ -17,16 +17,36 @@ public class Donation {
     @OneToMany(fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Institution institution;
     private String street;
     private String city;
     private String zipCode;
+
+    private String description;
+
+    private String phoneNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-//    @DateTimeFormat(pattern = "hh-mm-ss")
+    //    @DateTimeFormat(pattern = "hh-mm-ss")
     private LocalTime pickUpTime;
     private String pickUpComment;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public Long getId() {
         return id;
@@ -108,17 +128,19 @@ public class Donation {
         this.pickUpComment = pickUpComment;
     }
 
-    public Donation(){
+    public Donation() {
 
     }
 
-    public Donation(Integer quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
+    public Donation(Integer quantity, List<Category> categories, Institution institution, String street, String city, String zipCode, String description, String phoneNumber, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
         this.quantity = quantity;
         this.categories = categories;
         this.institution = institution;
         this.street = street;
         this.city = city;
         this.zipCode = zipCode;
+        this.description = description;
+        this.phoneNumber = phoneNumber;
         this.pickUpDate = pickUpDate;
         this.pickUpTime = pickUpTime;
         this.pickUpComment = pickUpComment;
@@ -126,7 +148,7 @@ public class Donation {
 
     @Override
     public String toString() {
-        return "DonationRepository{" +
+        return "Donation{" +
                 "id=" + id +
                 ", quantity=" + quantity +
                 ", categories=" + categories +
@@ -134,6 +156,8 @@ public class Donation {
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", zipCode='" + zipCode + '\'' +
+                ", description='" + description + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", pickUpDate=" + pickUpDate +
                 ", pickUpTime=" + pickUpTime +
                 ", pickUpComment='" + pickUpComment + '\'' +

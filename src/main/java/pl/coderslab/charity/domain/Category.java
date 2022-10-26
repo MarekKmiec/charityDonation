@@ -1,9 +1,6 @@
 package pl.coderslab.charity.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Category {
@@ -28,12 +25,7 @@ public class Category {
         Name = name;
     }
 
-    public Category() {
-
-    }
-
-    public Category(String name) {
-        Name = name;
+    public Category(){
     }
 
     @Override
